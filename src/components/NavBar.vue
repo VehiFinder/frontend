@@ -1,17 +1,22 @@
+<script setup lang="ts">
+import { ref } from 'vue'
+const showCurtain = ref(false)
+const showNewContent = ref(false)
+
+function toggleBox() {
+  showCurtain.value = !showCurtain.value
+}
+function handleTransitionEnd(){
+  showNewContent.value = !showNewContent.value
+}
+</script>
+
 <template>
   <header class="header" id="header">
     <nav class="nav container">
       <a class="icon">
         <img class="image-icon" src="/images/icon2.jpg" height="100px">
       </a>
-      <!-- <div class="nav__menu" id="nav-menu">
-        <ul class="nav__list">
-          <li class="nav__item">
-            <a href="#" class="nav__link">Home</a>
-          </li>
-        </ul>
-      </div> -->
-
       <div class="nav__actions">
         <!-- Search button -->
         <i class="ri-search-line nav__search" id="search-btn"></i>
@@ -26,15 +31,21 @@
       </div>
     </nav>
   </header>
-  <div class="landing-content">
-    <div class="image-div">
-      <img src="/images/background.jpeg" alt="image" class="main__bg">
-    </div>
-    <div class="right-middle">
-      <h1>Looking for a new car?</h1>
-      <button class="ghost-button">Run</button>
+  <div v-if="showNewContent" class="background-gradient">
+    <h1>Sapoperro</h1>
+  </div>
+  <div :class="{ toggleCurtain: showCurtain }" @transitionend="handleTransitionEnd">
+    <div class="landing-content">
+      <div class="left-side">
+        <img src="/images/background.jpeg" alt="image" class="main__bg">
+      </div>
+      <div class="right-middle">
+        <h1>Looking for a new car?</h1>
+        <button @click="toggleBox" class="ghost-button">Run</button>
+      </div>
     </div>
   </div>
+  
 
 </template>
 
@@ -131,13 +142,13 @@
   width: 100vw;
 }
 
-.image-div {
+.left-side {
   display: inline-block;
   width: 50%;
   height: 100%;
 }
 
-.image-div img {
+.left-side img {
   height: 100%;
   width: 100%;
 }
@@ -192,5 +203,26 @@
   overflow: hidden;
   transform: scale(1.0288888888888);
   /* border: 2px solid black; */
+}
+
+@keyframes slide-right {
+  from {
+    transform: translateX(0);
+    /* Comienza en su posición original */
+  }
+
+  to {
+    transform: translateX(100vw);
+    /* Se mueve completamente fuera del viewport hacia la derecha */
+  }
+}
+
+.toggleCurtain {
+  animation: slide-right 1.2s ease-in-out forwards;
+}
+
+.background-gradient {
+  margin-top: 22%;
+  background-image: linear-gradient (to right, orange 75%, pink 25%);
 }
 </style>
