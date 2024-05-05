@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 const showCurtain = ref(false)
 const showSearch = ref(false)
-
+import SearchView from './SearchView.vue'
 function toggleBox() {
   showCurtain.value = !showCurtain.value
 }
@@ -13,9 +13,7 @@ function handleAnimationEnd(){
 
 <template>
   <main>
-    <div v-if="showSearch">
-    <Search/>
-    </div>
+    <SearchView  v-if="showSearch"/>
     <div :class="{ toggleCurtain: showCurtain }" @animationend="handleAnimationEnd">
     <div class="landing-content">
       <div class="left-side">
@@ -201,7 +199,7 @@ function handleAnimationEnd(){
     /* Se mueve completamente fuera del viewport hacia la derecha */
   }
 }
-
+  
 .toggleCurtain {
   animation: slide-right 1.2s ease-in-out forwards;
 }

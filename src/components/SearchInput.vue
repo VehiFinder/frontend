@@ -27,14 +27,17 @@ export default {
 <style>
 .search-input-wrapper {
     height: auto;
-    width: fit-content;
+    /* width: fit-content; */
+    width: 30%;
     top: 15%;
     position: relative;
 }
-.searchinput-div{
-    position: relative;
-    display: flex;
+.searchinput-div {
+    position: absolute;
     top: 15%;
+    width: 100%;
+    display: flex;
     justify-content: center;
 }
+
 </style>
