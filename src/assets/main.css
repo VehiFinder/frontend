@@ -35,7 +35,7 @@ a,
 
 
 #app {
-  height: 100vh;
+  height: 100%;
   width: 100vw;
   margin: 0 auto;
   font-weight: normal;
@@ -86,7 +86,7 @@ a,
 }
 
 html{
-  scroll-behavior: smooth;
+  scroll-behavior: smooth;  
 }
 
 body,
@@ -119,5 +119,10 @@ img {
   display: block;
   max-width: 100%;
 }
+
+main{
+  overflow-y: auto;
+}
+
 /*=============== REUSABLE CSS CLASSES ===============*/
 

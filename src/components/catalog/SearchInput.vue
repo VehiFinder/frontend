@@ -34,7 +34,7 @@ export default {
 }
 .searchinput-div {
     position: absolute;
-    top: 15%;
+    top: 11%;
     width: 100%;
     display: flex;
     justify-content: center;

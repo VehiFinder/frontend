@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import SearchInput from '../components/SearchInput.vue'
+import SearchInput from '../components/catalog/SearchInput.vue'
+import CarList from '../components/car/CarList.vue'
+import CarListItem from '../components/car/CarListItem.vue'
 // const showCurtain = ref(false)
 // const showSearch = ref(false)
 
@@ -14,6 +16,7 @@ import SearchInput from '../components/SearchInput.vue'
 
 <template>
   <SearchInput/>
+  <CarList/>
 </template>
 
 
