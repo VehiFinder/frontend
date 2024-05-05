@@ -1,15 +1,3 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-const showCurtain = ref(false)
-const showNewContent = ref(false)
-
-function toggleBox() {
-  showCurtain.value = !showCurtain.value
-}
-function handleTransitionEnd(){
-  showNewContent.value = !showNewContent.value
-}
-</script>
 
 <template>
   <header class="header" id="header">
@@ -31,22 +19,6 @@ function handleTransitionEnd(){
       </div>
     </nav>
   </header>
-  <div v-if="showNewContent" class="background-gradient">
-    <h1>Sapoperro</h1>
-  </div>
-  <div :class="{ toggleCurtain: showCurtain }" @transitionend="handleTransitionEnd">
-    <div class="landing-content">
-      <div class="left-side">
-        <img src="/images/background.jpeg" alt="image" class="main__bg">
-      </div>
-      <div class="right-middle">
-        <h1>Looking for a new car?</h1>
-        <button @click="toggleBox" class="ghost-button">Run</button>
-      </div>
-    </div>
-  </div>
-  
-
 </template>
 
 <style>
@@ -115,6 +87,7 @@ function handleTransitionEnd(){
   flex-direction: row;
   row-gap: 2.5rem;
   text-align: center;
+
 }
 
 .nav__link {
@@ -187,6 +160,7 @@ function handleTransitionEnd(){
 .ghost-button:active {
   background-color: #fff;
   color: #000;
+  transition: background-color 0.9s
 }
 
 .icon {
