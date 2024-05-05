@@ -121,7 +121,7 @@ img {
 }
 
 main{
-  overflow-y: auto;
+  height: 100%;
 }
 
 /*=============== REUSABLE CSS CLASSES ===============*/

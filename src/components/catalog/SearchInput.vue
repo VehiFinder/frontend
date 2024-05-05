@@ -31,6 +31,8 @@ export default {
     width: 30%;
     top: 15%;
     position: relative;
+    border-radius: 10%;
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.2);
 }
 .searchinput-div {
     position: absolute;

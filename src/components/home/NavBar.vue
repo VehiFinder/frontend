@@ -2,9 +2,9 @@
 <template>
   <header class="header" id="header">
     <nav class="nav container">
-      <a class="icon">
+      <!-- <a class="icon">
         <img class="image-icon" src="/images/icon2.jpg" height="100px">
-      </a>
+      </a> -->
       <div class="nav__actions">
         <!-- Search button -->
         <i class="ri-search-line nav__search" id="search-btn"></i>
