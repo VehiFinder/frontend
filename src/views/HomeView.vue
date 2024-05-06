@@ -3,6 +3,8 @@ import { ref } from 'vue'
 const showCurtain = ref(false)
 const showSearch = ref(false)
 import SearchView from './SearchView.vue'
+import NavBar from '../components/home/NavBar.vue'
+
 function toggleBox() {
   showCurtain.value = !showCurtain.value
 }
@@ -12,6 +14,7 @@ function handleAnimationEnd(){
 </script>
 
 <template>
+  <NavBar v-if="!showSearch"/>
   <main>
     <SearchView  v-if="showSearch"/>
     <div :class="{ toggleCurtain: showCurtain }" @animationend="handleAnimationEnd">
