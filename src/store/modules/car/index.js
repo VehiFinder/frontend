@@ -20,7 +20,14 @@ const mutations = {
 const actions = {
   getCarItems ({ commit }) {
     commit('SET_LOADING', true);
-    axios.get(`http://localhost:5000/api/autos`).then((response) => {
+    axios.get(`http://localhost:5000/api/autos?page=1`).then((response) => {
+      commit('UPDATE_CAR_ITEMS', response.data)
+      commit('SET_LOADING', false);
+    });
+  },
+  getCarByName ({commit}, carName){
+    commit('SET_LOADING', true);
+    axios.get(`http://localhost:5000/api/autos/${carName}?page=1`).then((response) => {
       commit('UPDATE_CAR_ITEMS', response.data)
       commit('SET_LOADING', false);
     });
@@ -32,7 +39,10 @@ const getters = {
   carItems: state => state.carItems,
   isLoading(state) {
     return state.isLoading;
-  }
+  },
+  getCarByName: (state) => (carName) =>{
+    return state.carItems.find((car)=>car.name === carName)
+  } 
 }
 
 

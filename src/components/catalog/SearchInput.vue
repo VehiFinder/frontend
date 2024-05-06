@@ -1,9 +1,9 @@
 <script>
 import { ref } from 'vue'
-import { RouterLink } from 'vue-router'
 import SearchInput from 'vue-search-input'
 // Optionally import default styling
 import 'vue-search-input/dist/styles.css'
+import { useStore } from 'vuex'; // Para interactuar con Vuex
 
 const searchVal = ref('')
 
@@ -12,12 +12,17 @@ export default {
         SearchInput
     },
     setup() {
+        const store = useStore()
         const reloadPage = () => {
             window.location.reload(); // Recarga completa de la página
         };
+        const performSearch = () =>{
+            store.dispatch('getCarByName', searchVal.value);
+        }
         return {
             searchVal,
-            reloadPage
+            reloadPage,
+            performSearch,
         }
     }
 }
@@ -25,7 +30,7 @@ export default {
 
 <template>
     <div class="searchinput-div">
-        <SearchInput v-model="searchVal" />
+        <SearchInput v-model="searchVal" @keyup.enter="performSearch" />
         <div class="back-button">
             <button class="btn-pill" @click="reloadPage">
                 <span>Back</span>
