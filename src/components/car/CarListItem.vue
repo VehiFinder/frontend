@@ -4,9 +4,7 @@
         <div class="content">
           <h4>{{ carItem.nombre }}</h4>
           <img class="card-image" :src="carItem.imagen" alt="">
-          <a
-            class="button is-rounded is-pulled-left"
-            :href="carItem.link">
+            <a class="button is-rounded is-pulled-left" :href="carItem.link" target="_blank">
             <strong>Learn more</strong>
           </a>
           <br />
