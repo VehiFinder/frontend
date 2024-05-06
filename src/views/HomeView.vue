@@ -9,6 +9,7 @@ function toggleBox() {
 function handleAnimationEnd(){
   showSearch.value = !showSearch.value
 }
+
 </script>
 
 <template>

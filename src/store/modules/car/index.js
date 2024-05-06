@@ -2,22 +2,24 @@ import axios from 'axios';
 
 //States
 const state = {
-  carItems: [] 
+  carItems: []
 }
 
 //Mutations modified states
 const mutations = {
-  UPDATE_CAR_ITEMS (state, payload) {
+  UPDATE_CAR_ITEMS(state, payload) {
     state.carItems = payload;
-    console.log(payload )
+    console.log(payload)
   }
 }
 
 //Actions trigger mutations 
 const actions = {
-  getCarItems ({ commit }) {
-    axios.get(`http://localhost:5000/api/autos`).then((response) => {
-      commit('UPDATE_CAR_ITEMS', response.data)
+  getCarItems({ commit }) {
+    this.isLoading = false;
+    axios.get(`http://localhost:5000/api/autos?page=1`).then((response) => {
+      commit('UPDATE_CAR_ITEMS', response.data);
+      this.isLoading = false;
     });
   }
 }
@@ -32,10 +34,10 @@ const getters = {
 
 
 const carModule = {
-    state, 
-    mutations,
-    actions,
-    getters
+  state,
+  mutations,
+  actions,
+  getters
 }
 
 export default carModule
