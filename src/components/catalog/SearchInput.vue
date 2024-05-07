@@ -16,7 +16,7 @@ export default {
         const reloadPage = () => {
             window.location.reload(); // Recarga completa de la página
         };
-        const performSearch = () =>{
+        const performSearch = () => {
             store.dispatch('getCarByName', searchVal.value);
         }
         return {
@@ -185,4 +185,6 @@ export default {
         }
     }
 }
+
+
 </style>

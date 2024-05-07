@@ -1,5 +1,4 @@
 <template>
-  
   <div class="loader-search" v-if="isLoading">
     <div class="loader-bounce">
       <svg x="0" y="0" viewBox="0 0 200 200" width="160px" class="wheel">
@@ -14,6 +13,16 @@
     </div>
   </div>
   <div class="container is-fluid" v-if="!isLoading">
+    <div class="selectdiv">
+        <label>
+            <select>
+                <option selected> Select Year </option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+            </select>
+        </label>
+    </div>
     <div class="tile is-ancestor">
       <div class="tile is-parent" v-for="carItem in carItems" :key="carItem.id">
         <CarListItem :carItem="carItem" />
@@ -66,7 +75,7 @@ export default {
 
 /* General */
 .is-fluid {
-  top: 135px;
+  top: 13vh;
 }
 
 /* Loader */
@@ -117,5 +126,62 @@ export default {
 .loader-text{
   color: #3d5a80; 
   font-size: 2.5em; 
+}
+
+/* Estilos select */
+.selectdiv {
+    position: relative;
+    /*Don't really need this just for demo styling*/
+    float: left;
+    min-width: 200px;
+    margin: 30px 33%;
+}
+
+/* IE11 hide native button (thanks Matt!) */
+select::-ms-expand {
+    display: none;
+}
+
+.selectdiv:after {
+    content: '<>';
+    font: 17px "Consolas", monospace;
+    color: #333;
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+    right: 11px;
+    /*Adjust for position however you want*/
+
+    top: 18px;
+    padding: 0 0 2px;
+    border-bottom: 1px solid #999;
+    /*left line */
+
+    position: absolute;
+    pointer-events: none;
+}
+
+.selectdiv select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Add some styling */
+
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    height: 50px;
+    float: right;
+    margin: 5px 0px;
+    padding: 0px 24px;
+    font-size: 16px;
+    line-height: 1.75;
+    color: #333;
+    background-color: #ffffff;
+    background-image: none;
+    border: 1px solid #cccccc;
+    -ms-word-break: normal;
+    word-break: normal;
 }
 </style>
