@@ -13,16 +13,104 @@
     </div>
   </div>
   <div class="container is-fluid" v-if="!isLoading">
-    <div class="selectdiv">
-        <label>
-            <select>
-                <option selected> Select Year </option>
+    <!-- SELECTORES -->
+    <!-- Selectores de anhos -->
+
+    <div class="selectors">
+      <div class="sectiondiv">
+        <div class="section-name">
+          <label>Año</label>
+        </div>
+        <div class="select-sectiondiv">
+          <div class="selectdiv">
+            <label>From</label>
+            <label>
+              <select>
+                <option selected>Year</option>
                 <option>2024</option>
                 <option>2023</option>
                 <option>2022</option>
-            </select>
-        </label>
+              </select>
+            </label>
+          </div>
+          <div class="selectdiv">
+            <label>To</label>
+            <label>
+              <select>
+                <option selected>Year</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Selector de kilometraje -->
+      <div class="sectiondiv">
+        <div class="section-name">
+          <label>kilometraje</label>
+        </div>
+        <div class="select-sectiondiv">
+          <div class="selectdiv">
+            <label>From</label>
+            <label>
+              <select>
+                <option selected>Year</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </label>
+          </div>
+          <div class="selectdiv">
+            <label>To</label>
+            <label>
+              <select>
+                <option selected>Year</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- Selector de precio -->
+      <div class="sectiondiv">
+        <div class="section-name">
+          <label>Precio</label>
+        </div>
+        <div class="select-sectiondiv">
+          <div class="selectdiv">
+            <label>From</label>
+            <label>
+              <select>
+                <option selected>Year</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </label>
+          </div>
+          <div class="selectdiv">
+            <label>To</label>
+            <label>
+              <select>
+                <option selected>Year</option>
+                <option>2024</option>
+                <option>2023</option>
+                <option>2022</option>
+              </select>
+            </label>
+          </div>
+        </div>
+      </div>
+
     </div>
+
+
     <div class="tile is-ancestor">
       <div class="tile is-parent" v-for="carItem in carItems" :key="carItem.id">
         <CarListItem :carItem="carItem" />
@@ -86,11 +174,17 @@ export default {
 }
 
 @keyframes bounce {
-  from, 20%, 53%, 80%, to {
+
+  from,
+  20%,
+  53%,
+  80%,
+  to {
     transform: translate3d(0, 0, 0);
   }
 
-  40%, 43% {
+  40%,
+  43% {
     transform: translate3d(0, -30px, 0);
   }
 
@@ -104,14 +198,14 @@ export default {
 }
 
 .loader-search {
-    display: inline-flex;
-    align-content: center;
-    justify-content: center;
-    width: 100%;
-    height: 140px;
-    margin: 13% auto;
-    text-align: center;
-    color: #427035;
+  display: inline-flex;
+  align-content: center;
+  justify-content: center;
+  width: 100%;
+  height: 140px;
+  margin: 13% auto;
+  text-align: center;
+  color: #427035;
 }
 
 .loader-bounce {
@@ -123,65 +217,102 @@ export default {
   fill: #3d5a80;
   animation: spin 2s linear infinite;
 }
-.loader-text{
-  color: #3d5a80; 
-  font-size: 2.5em; 
+
+.loader-text {
+  color: #3d5a80;
+  font-size: 2.5em;
 }
 
 /* Estilos select */
 .selectdiv {
-    position: relative;
-    /*Don't really need this just for demo styling*/
-    float: left;
-    min-width: 200px;
-    margin: 30px 33%;
+  position: relative;
+  float: left;
+  width: 50%;
+  max-width: 118px;
+  margin: 1px -5% 24px 6%;
 }
 
 /* IE11 hide native button (thanks Matt!) */
 select::-ms-expand {
-    display: none;
+  display: none;
 }
 
 .selectdiv:after {
-    content: '<>';
-    font: 17px "Consolas", monospace;
-    color: #333;
-    -webkit-transform: rotate(90deg);
-    -moz-transform: rotate(90deg);
-    -ms-transform: rotate(90deg);
-    transform: rotate(90deg);
-    right: 11px;
-    /*Adjust for position however you want*/
+  content: '<>';
+  font: 17px "Consolas", monospace;
+  color: #333;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  right: 11px;
+  /*Adjust for position however you want*/
 
-    top: 18px;
-    padding: 0 0 2px;
-    border-bottom: 1px solid #999;
-    /*left line */
+  top: 43px;
+  padding: 0 0 2px;
+  border-bottom: 1px solid #999;
+  /*left line */
 
-    position: absolute;
-    pointer-events: none;
+  position: absolute;
+  pointer-events: none;
 }
 
 .selectdiv select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    /* Add some styling */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /* Add some styling */
 
-    display: block;
-    width: 100%;
-    max-width: 320px;
-    height: 50px;
-    float: right;
-    margin: 5px 0px;
-    padding: 0px 24px;
-    font-size: 16px;
-    line-height: 1.75;
-    color: #333;
-    background-color: #ffffff;
-    background-image: none;
-    border: 1px solid #cccccc;
-    -ms-word-break: normal;
-    word-break: normal;
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  height: 50px;
+  float: right;
+  margin: 5px 0px;
+  padding: 0px 24px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  -ms-word-break: normal;
+  word-break: normal;
+}
+
+.select-sectiondiv {
+  display: inline-flex;
+  gap: 2%;
+}
+/* Para ajustar la separación */
+.sectiondiv{
+  margin-top: 2%;
+  margin-bottom: 2.3%;
+}
+
+label {
+  font-family: "Roboto", sans-serif;
+  font-size: .675rem;
+  font-weight: 500;
+  letter-spacing: .1rem;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+/* Para ajustar el gap  */
+.selectors {
+  margin-left: 5%;
+  display: flex;
+  gap: 11%;
+}
+
+.section-name {
+  height: fit-content;
+  width: 100%
+}
+
+.section-name label {
+  font-weight: bolder;
+  margin-left: 4%;
 }
 </style>
