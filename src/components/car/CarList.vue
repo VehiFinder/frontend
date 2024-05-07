@@ -57,10 +57,10 @@
             <label>From</label>
             <label>
               <select>
-                <option selected>Year</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
+                <option selected>Km</option>
+                <option>30.000km</option>
+                <option>60.000km</option>
+                <option>100.000km</option>
               </select>
             </label>
           </div>
@@ -68,10 +68,10 @@
             <label>To</label>
             <label>
               <select>
-                <option selected>Year</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
+                <option selected>Km</option>
+                <option>30.000km</option>
+                <option>60.000km</option>
+                <option>100.000km</option>
               </select>
             </label>
           </div>
@@ -87,10 +87,10 @@
             <label>From</label>
             <label>
               <select>
-                <option selected>Year</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
+                <option selected>$</option>
+                <option>45M</option>
+                <option>85M</option>
+                <option>100M</option>
               </select>
             </label>
           </div>
@@ -98,10 +98,10 @@
             <label>To</label>
             <label>
               <select>
-                <option selected>Year</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
+                <option selected>$</option>
+                <option>45M</option>
+                <option>85M</option>
+                <option>100M</option>
               </select>
             </label>
           </div>
@@ -228,7 +228,6 @@ export default {
   position: relative;
   float: left;
   width: 50%;
-  max-width: 118px;
   margin: 1px -5% 24px 6%;
 }
 
