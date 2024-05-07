@@ -1,10 +1,9 @@
 <script>
-import { ref } from 'vue'
+import { ref , watch} from 'vue'
 import SearchInput from 'vue-search-input'
 // Optionally import default styling
 import 'vue-search-input/dist/styles.css'
 import { useStore } from 'vuex'; // Para interactuar con Vuex
-
 const searchVal = ref('')
 
 export default {
@@ -17,8 +16,14 @@ export default {
             window.location.reload(); // Recarga completa de la página
         };
         const performSearch = () => {
-            store.dispatch('getCarByName', searchVal.value);
+            store.dispatch('getCarByFilters', searchVal.value);
         }
+        
+        watch(searchVal, (newValue, oldValue) => {
+            if (newValue !== oldValue) {
+                store.dispatch('updateCarName', newValue); // Despachar acción con el nuevo valor
+            }
+        });
         return {
             searchVal,
             reloadPage,
@@ -185,6 +190,4 @@ export default {
         }
     }
 }
-
-
 </style>

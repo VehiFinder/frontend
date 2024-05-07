@@ -16,7 +16,7 @@
     <!-- SELECTORES -->
     <!-- Selectores de anhos -->
 
-    <div class="selectors">
+    <div class="selectors" v-if="!isLoading">
       <div class="sectiondiv">
         <div class="section-name">
           <label>Año</label>
@@ -25,7 +25,7 @@
           <div class="selectdiv">
             <label>From</label>
             <label>
-              <select>
+              <select v-model="minYear" @change="handleMinYear">
                 <option selected>Year</option>
                 <option>2024</option>
                 <option>2023</option>
@@ -36,7 +36,7 @@
           <div class="selectdiv">
             <label>To</label>
             <label>
-              <select>
+              <select v-model="maxYear" @change="handleMaxYear">
                 <option selected>Year</option>
                 <option>2024</option>
                 <option>2023</option>
@@ -56,22 +56,22 @@
           <div class="selectdiv">
             <label>From</label>
             <label>
-              <select>
+              <select v-model="minKm" @change="handleMinKm">
                 <option selected>Km</option>
-                <option>30.000km</option>
-                <option>60.000km</option>
-                <option>100.000km</option>
+                <option>30.000</option>
+                <option>60.000</option>
+                <option>100.000</option>
               </select>
             </label>
           </div>
           <div class="selectdiv">
             <label>To</label>
             <label>
-              <select>
+              <select v-model="maxKm" @change="handleMaxKm">
                 <option selected>Km</option>
-                <option>30.000km</option>
-                <option>60.000km</option>
-                <option>100.000km</option>
+                <option>30.000</option>
+                <option>60.000</option>
+                <option>100.000</option>
               </select>
             </label>
           </div>
@@ -86,8 +86,8 @@
           <div class="selectdiv">
             <label>From</label>
             <label>
-              <select>
-                <option selected>$</option>
+              <select v-model="minPrice" @change="handleMinPrice">
+                <option selected>COP</option>
                 <option>45M</option>
                 <option>85M</option>
                 <option>100M</option>
@@ -97,8 +97,8 @@
           <div class="selectdiv">
             <label>To</label>
             <label>
-              <select>
-                <option selected>$</option>
+              <select v-model="maxPrice" @change="handleMaxPrice">
+                <option selected>COP</option>
                 <option>45M</option>
                 <option>85M</option>
                 <option>100M</option>
@@ -110,7 +110,6 @@
 
     </div>
 
-
     <div class="tile is-ancestor">
       <div class="tile is-parent" v-for="carItem in carItems" :key="carItem.id">
         <CarListItem :carItem="carItem" />
@@ -120,7 +119,10 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+import { ref } from 'vue';
 import CarListItem from './CarListItem.vue'
+import { useStore } from 'vuex'; // Para interactuar con Vuex
+
 export default {
   name: "CarList",
   components: {
@@ -129,12 +131,58 @@ export default {
   computed: {
     ...mapGetters([
       'carItems',
-      'isLoading'
+      'isLoading',
     ])
   },
   created() {
     this.$store.dispatch('getCarItems');
-  }
+  },
+  setup() {
+    const minYear = ref("Year")
+    const maxYear = ref("Year")
+    const minKm = ref("Km")
+    const maxKm = ref("Km")
+    const minPrice = ref("$")
+    const maxPrice = ref("$")
+
+    const store = useStore()
+
+    const handleMinYear = () => {
+      store.dispatch('updateMinYear', minYear.value)
+    }
+
+    const handleMaxYear = () => {
+      store.dispatch('updateMaxYear', maxYear.value)
+    }
+    const handleMinKm = () => {
+      store.dispatch('updateMinKm', minKm.value)
+    }
+    const handleMaxKm = () => {
+      store.dispatch('updateMaxKm', maxKm.value)
+    }
+    const handleMinPrice = () => {
+      store.dispatch('updateMinPrice', minPrice.value)
+    }
+    const handleMaxPrice = () => {
+      store.dispatch('updateMaxPrice', maxPrice.value)
+    }
+
+    // Retorna las variables para poder usarlas en el template
+    return {
+      minYear,
+      maxYear,
+      minKm,
+      maxKm,
+      minPrice, 
+      maxPrice,
+      handleMinYear,
+      handleMaxYear,
+      handleMinKm,
+      handleMaxKm,
+      handleMinPrice,
+      handleMaxPrice,
+    };
+  },
 };
 </script>
 
@@ -283,8 +331,9 @@ select::-ms-expand {
   display: inline-flex;
   gap: 2%;
 }
+
 /* Para ajustar la separación */
-.sectiondiv{
+.sectiondiv {
   margin-top: 2%;
   margin-bottom: 2.3%;
 }
