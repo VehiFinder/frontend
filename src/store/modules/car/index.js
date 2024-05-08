@@ -98,11 +98,14 @@ const actions = {
 //   getCarByFilters ({commit}, carName, minYear, maxYear, minKm, maxKm, minPrice, maxPrice){
 
   getCarByFilters ({commit}, carName){
+    commit('SET_LOADING', true);
     var url = `https://vehifinder.onrender.com/api/autos/${carName}?page=1&year_min=${state.minYear}&year_max=${state.maxYear}&km_min=${state.minKm}&km_max=${state.maxKm}&precio_min=${state.minPrice}&precio_max=${state.maxPrice}`
     axios.get(url).then((response) => {
       console.log("Hemos entrado ", url)
       console.log(response.data)
       commit('UPDATE_CAR_ITEMS', response.data)
+      commit('SET_LOADING', false);
+
     });
   },
 }
