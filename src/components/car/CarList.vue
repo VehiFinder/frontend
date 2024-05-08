@@ -19,7 +19,7 @@
     <div class="selectors" v-if="!isLoading">
       <div class="sectiondiv">
         <div class="section-name">
-          <label>Año</label>
+          <label>Year</label>
         </div>
         <div class="select-sectiondiv">
           <div class="selectdiv">
@@ -50,7 +50,7 @@
       <!-- Selector de kilometraje -->
       <div class="sectiondiv">
         <div class="section-name">
-          <label>kilometraje</label>
+          <label>Kilometers</label>
         </div>
         <div class="select-sectiondiv">
           <div class="selectdiv">
@@ -80,7 +80,7 @@
       <!-- Selector de precio -->
       <div class="sectiondiv">
         <div class="section-name">
-          <label>Precio</label>
+          <label>Price</label>
         </div>
         <div class="select-sectiondiv">
           <div class="selectdiv">
@@ -142,8 +142,8 @@ export default {
     const maxYear = ref("Year")
     const minKm = ref("Km")
     const maxKm = ref("Km")
-    const minPrice = ref("$")
-    const maxPrice = ref("$")
+    const minPrice = ref("COP")
+    const maxPrice = ref("COP")
 
     const store = useStore()
 

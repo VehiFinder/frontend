@@ -25,22 +25,34 @@ const mutations = {
     state.carName =  status;
   },
   SET_MIN_YEAR(state, status){
-    state.minYear =  status;
+    if(status !== "Year"){
+      state.minYear =  status;
+    }
   },
   SET_MAX_YEAR(state, status){
-    state.maxYear  =  status;
+    if(status !== "Year"){
+      state.maxYear =  status;
+    }  
   },
   SET_MIN_KM(state, status){
-    state.minKm =  status;
+    if(status !== "Km"){
+      state.minKm =  status;
+    }
   },
   SET_MAX_KM(state, status){
-    state.maxKm  =  status;
+    if(status !== "Km"){
+      state.maxKm =  status;
+    }
   },
   SET_MIN_PRICE(state, status){
-    state.minPrice =  status;
+    if(status !== "COP"){
+      state.minPrice =  status;
+    }
   },
   SET_MAX_PRICE(state, status){
-    state.maxPrice  =  status;
+    if(status !== "COP"){
+      state.maxPrice =  status;
+    }
   },
 
 }
@@ -98,6 +110,9 @@ const actions = {
 //   getCarByFilters ({commit}, carName, minYear, maxYear, minKm, maxKm, minPrice, maxPrice){
 
   getCarByFilters ({commit}, carName){
+    if(carName === ""){
+      this.getCarItems()
+    }
     commit('SET_LOADING', true);
     var url = `https://vehifinder.onrender.com/api/autos/${carName}?page=1&year_min=${state.minYear}&year_max=${state.maxYear}&km_min=${state.minKm}&km_max=${state.maxKm}&precio_min=${state.minPrice}&precio_max=${state.maxPrice}`
     axios.get(url).then((response) => {

@@ -34,7 +34,7 @@ export default {
 </script>
 
 <template>
-    <div class="searchinput-div">
+    <div class="searchinput-div" @click="performSearch">
         <SearchInput v-model="searchVal" @keyup.enter="performSearch" />
         <div class="back-button">
             <button class="btn-pill" @click="reloadPage">
